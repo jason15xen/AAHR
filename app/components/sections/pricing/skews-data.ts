@@ -1,0 +1,145 @@
+import type { Skew } from "./types";
+
+export const skews: Skew[] = [
+  {
+    title: "Residential",
+    description: "For home + retail",
+    variant: "residential",
+    tiers: [
+      {
+        name: "Companion Base",
+        price: "$15,000",
+        features: [
+          "Basic household tasks",
+          "Voice command interface",
+          "12-hour battery life",
+          "AI personality builder",
+          "Standard COGNORTAY™",
+          "1-year warranty",
+        ],
+      },
+      {
+        name: "Companion Plus",
+        price: "$22,000",
+        badge: "Popular",
+        features: [
+          "Everything in Base",
+          "Advanced reasoning module",
+          "Cooking & cleaning",
+          "AI-Family Sync",
+          "Pro COGNORTAY™",
+          "Pet-mode integration",
+          "2-year warranty",
+        ],
+      },
+      {
+        name: "Companion Elite",
+        price: "$35,000",
+        features: [
+          "Everything in Plus",
+          "Custom skin material",
+          "Child-safe motor mode",
+          "Eldercare protocol",
+          "1M+ parameter LLM",
+          "Advanced facial recognition",
+          "3-year warranty",
+          "White-glove setup",
+        ],
+      },
+    ],
+  },
+  {
+    title: "Commercial",
+    description: "Productivity, persistent",
+    variant: "commercial",
+    tiers: [
+      {
+        name: "Pro Standard",
+        price: "$45,000",
+        features: [
+          "Front-of-house automation",
+          "Multi-language support",
+          "Hospitality reception",
+          "Pro COGNORTAY™",
+          "20-hour duty cycle",
+          "1-year warranty",
+        ],
+      },
+      {
+        name: "Pro Advanced",
+        price: "$120,000",
+        features: [
+          "Everything in Standard",
+          "Live translation engine",
+          "Surveillance integration",
+          "Pro+ COGNORTAY™",
+          "Concierge AI suite",
+          "Resilience integration",
+          "2-year warranty",
+        ],
+      },
+      {
+        name: "Pro Enterprise",
+        price: "$200,000",
+        badge: "Best Value",
+        features: [
+          "Everything in Advanced",
+          "Fleet management (≤10 units)",
+          "On-call concierge",
+          "Pro+ COGNORTAY™",
+          "API access",
+          "Dedicated support",
+          "3-year warranty",
+          "On-site onboarding",
+        ],
+      },
+    ],
+  },
+  {
+    title: "Industrial",
+    description: "Strength without sacrifice",
+    variant: "industrial",
+    tiers: [
+      {
+        name: "Iron Core",
+        price: "$95,000",
+        features: [
+          "Warehouse & logistics ops",
+          "IP65 ingress protection",
+          "Heavy lift packages",
+          "Pro COGNORTAY™",
+          "Hazardous-zone certified",
+          "1-year warranty",
+        ],
+      },
+      {
+        name: "Iron Advanced",
+        price: "$220,000",
+        badge: "Popular",
+        features: [
+          "Everything in Core",
+          "IP67 ingress protection",
+          "Multi-tool integration",
+          "Heavy-duty modular",
+          "AI-vision modular",
+          "30-hour operation",
+          "2-year warranty",
+        ],
+      },
+      {
+        name: "Iron Sovereign",
+        price: "$485,000",
+        features: [
+          "Everything in Advanced",
+          "Hazardous materials cert",
+          "Extreme temperature rated",
+          "Custom armor materials",
+          "Multi-frame networks",
+          "Custom-build manufacturing",
+          "5-year warranty",
+          "White-glove deployment",
+        ],
+      },
+    ],
+  },
+];

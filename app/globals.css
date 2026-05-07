@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+:root {
+  --color-cream: #f3e9d2;
+  --color-cream-light: #faf2dc;
+  --color-cream-dim: #e8dcc0;
+  --color-red: #c8102e;
+  --color-red-dark: #9b0c23;
+  --color-red-deeper: #6e0817;
+  --color-red-deepest: #3d040d;
+  --color-black: #0a0a0a;
+  --color-ink: #161616;
+  --color-ink-soft: #2a2a2a;
+  --color-gold: #e8b820;
+  --color-gold-light: #f4d56a;
+  --color-muted: #6b6b6b;
+  --color-line: #cbbf9f;
+}
+
+@theme inline {
+  --color-cream: var(--color-cream);
+  --color-cream-light: var(--color-cream-light);
+  --color-cream-dim: var(--color-cream-dim);
+  --color-red: var(--color-red);
+  --color-red-dark: var(--color-red-dark);
+  --color-red-deeper: var(--color-red-deeper);
+  --color-red-deepest: var(--color-red-deepest);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-gold: var(--color-gold);
+  --color-gold-light: var(--color-gold-light);
+  --color-muted: var(--color-muted);
+  --color-line: var(--color-line);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
+  --font-script: var(--font-cormorant);
+  --font-display: var(--font-bebas);
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+}
+
+body {
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-feature-settings: "ss01", "ss02";
+}
+
+.font-script {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.font-display {
+  font-family: var(--font-bebas), Impact, sans-serif;
+  letter-spacing: 0.04em;
+  font-weight: 400;
+}
+
+.font-serif {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+.divider-flourish {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.divider-flourish::before,
+.divider-flourish::after {
+  content: "";
+  width: 36px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+/* Diagonal line pattern used on Adam figure backgrounds */
+.bg-grid-blue {
+  background-color: #2c4d92;
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.18) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(255, 255, 255, 0.18) 25%, transparent 25%);
+  background-size: 6px 6px;
+}
