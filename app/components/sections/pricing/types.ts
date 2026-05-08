@@ -10,6 +10,7 @@ export type Tier = {
 export type Skew = {
   title: string;
   description: string;
+  longDescription: string;
   variant: SkewVariant;
   tiers: Tier[];
 };

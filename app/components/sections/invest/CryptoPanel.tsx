@@ -1,10 +1,9 @@
-import Badge from "../../ui/Badge";
 import CryptoCard from "./CryptoCard";
 import { cryptoOptions } from "./invest-data";
 
 export default function CryptoPanel() {
   return (
-    <div className="max-w-6xl mx-auto bg-black/40 border border-cream-light/10 p-6 lg:p-8">
+    <div className="max-w-6xl mx-auto bg-ink border-4 border-gold p-6 lg:p-8">
       <CryptoPanelHeader />
       <CryptoIntro />
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
@@ -20,20 +19,22 @@ export default function CryptoPanel() {
 function CryptoPanelHeader() {
   return (
     <div className="flex items-center gap-3 mb-3">
-      <p className="font-script italic text-2xl text-cream-light">
+      <p className="font-script text-[28px] text-cream-light leading-none">
         Crypto Investment Options
       </p>
-      <Badge variant="gold">New</Badge>
+      <span className="bg-red text-cream-light text-[11px] tracking-[0.18em] uppercase font-bold px-2.5 py-1 border border-cream-light font-display">
+        New
+      </span>
     </div>
   );
 }
 
 function CryptoIntro() {
   return (
-    <p className="text-[12px] text-cream-light/70 max-w-3xl mb-6 leading-relaxed">
-      Advanced Automatons accepts cryptocurrency investments across all tiers.
-      Send your chosen asset to the wallet addresses below and we&apos;ll convert
-      at market price within 24 hours to confirm allocation and complete
+    <p className="font-body text-[14px] text-cream-light/80 max-w-3xl mb-6 leading-snug italic">
+      Advanced Automatons now accepts cryptocurrency investments across all
+      tiers. Send your chosen asset to the wallet addresses below and our IR
+      team will contact you within 48 hours to confirm allocation and complete
       documentation.
     </p>
   );
@@ -41,11 +42,11 @@ function CryptoIntro() {
 
 function CryptoDisclaimer() {
   return (
-    <div className="mt-6 bg-black/60 border border-cream-light/10 p-3 text-[11px] text-cream-light/60 leading-relaxed">
-      ⓘ Crypto investments are subject to securities-investor verification.
-      Wallet addresses are AES-encrypted in transit. Advanced Automatons does
-      not custody crypto in long-term storage. Please consult counsel for
-      legal-clarification.
+    <div className="mt-6 bg-ink-soft border-2 border-gold p-3 font-body text-[12px] text-cream-light/70 leading-snug italic">
+      ⚠ Crypto investments are subject to accredited investor verification. All
+      wallet addresses are for illustrative purposes. Advanced Automatons does
+      not guarantee token exchange rates. Please contact our IR team before
+      sending funds: invest@advancedautomatons.com
     </div>
   );
 }

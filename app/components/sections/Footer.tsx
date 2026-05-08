@@ -1,16 +1,11 @@
-const links = [
-  { label: "Privacy", href: "#" },
-  { label: "Terms", href: "#" },
-  { label: "Contact", href: "#" },
-];
-
 export default function Footer() {
   return (
-    <footer className="bg-ink text-cream-light/70 border-t border-cream-light/10 py-10">
-      <div className="px-6 md:px-12 lg:px-20">
+    <footer className="bg-red text-cream-light py-8 border-t-4 border-ink">
+      <div className="px-6 md:px-12 lg:px-16">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <FooterBrand />
-          <FooterLinks />
+          <FooterTagline />
+          <FooterRights />
         </div>
       </div>
     </footer>
@@ -20,25 +15,28 @@ export default function Footer() {
 function FooterBrand() {
   return (
     <div>
-      <p className="font-script italic text-2xl text-cream-light">
+      <p className="font-script text-[28px] text-cream-light leading-none">
         Advanced Automatons
       </p>
-      <p className="text-[10px] tracking-[0.25em] uppercase mt-1 opacity-70 font-bold">
-        Codifying the human condition for a better tomorrow.
+      <p className="text-[10px] tracking-[0.25em] uppercase mt-1 text-cream-light/80 font-display">
+        Humanoid Robotics · Est. 2025
       </p>
     </div>
   );
 }
 
-function FooterLinks() {
+function FooterTagline() {
   return (
-    <div className="text-[10px] tracking-[0.2em] uppercase opacity-70 flex gap-4 font-bold">
-      <span>© 2025</span>
-      {links.map((l) => (
-        <a key={l.label} href={l.href} className="hover:text-gold transition-colors">
-          {l.label}
-        </a>
-      ))}
-    </div>
+    <p className="font-script text-[18px] italic text-cream-light/95">
+      &quot;Redefining the human condition for a better tomorrow.&quot;
+    </p>
+  );
+}
+
+function FooterRights() {
+  return (
+    <p className="font-body text-[12px] text-cream-light/85">
+      © 2025–2026 Advanced Automatons Inc. All Rights Reserved.
+    </p>
   );
 }

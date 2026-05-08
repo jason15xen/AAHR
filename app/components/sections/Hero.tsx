@@ -1,105 +1,155 @@
-import Eyebrow from "../ui/Eyebrow";
 import Button from "../ui/Button";
-import StatCard from "../ui/StatCard";
 
 const stats = [
-  { value: "1", label: "Android" },
-  { value: "3", label: "Skews" },
-  { value: "$15K", label: "Starting Price" },
-  { value: "Seed", label: "Round Stage" },
+  { value: "1", label: "Android Model", variant: "ink" as const },
+  { value: "3", label: "Skews", variant: "ink" as const },
+  { value: "$15K", label: "Starting Price", variant: "red" as const },
+  { value: "Seed", label: "Round Open", variant: "ink" as const },
 ];
 
 export default function Hero() {
   return (
     <section
       id="home"
-      className="relative bg-[var(--color-cream)] border-b border-line/60"
+      className="relative bg-notebook border-b-4 border-ink"
     >
-      <div className="px-6 md:px-12 lg:px-20 py-14 lg:py-20">
-        <div className="text-center mb-10">
-          <Eyebrow flourish className="text-red">
-            The Marvel of the Modern Age
-          </Eyebrow>
-        </div>
+      <div className="px-6 md:px-12 lg:px-16 py-12 lg:py-14">
+        <HeroEyebrow />
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 items-center max-w-7xl mx-auto">
-          <HeroCopy />
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-10 items-start max-w-7xl mx-auto mt-8">
+          <HeroLeft />
           <BrandBadge />
         </div>
-
-        <HeroStatsRow />
-        <HeroCTAs />
       </div>
     </section>
   );
 }
 
-function HeroCopy() {
+function HeroEyebrow() {
   return (
-    <div className="max-w-2xl">
-      <h1 className="font-script text-[5rem] sm:text-[6.5rem] lg:text-[8rem] leading-[0.9] text-red italic">
-        Advanced
-        <br />
-        <span className="pl-10 lg:pl-16 inline-block">Automatons</span>
-      </h1>
-
-      <p className="mt-8 max-w-md text-[14px] leading-relaxed text-ink/80">
-        Codifying the human condition for a better tomorrow. Founded in 2025,
-        Advanced Automatons is pioneering humanoid robotics — engineering
-        machines that think, move, and bend reality humanely.
-      </p>
-    </div>
-  );
-}
-
-function BrandBadge() {
-  return (
-    <div className="flex justify-center lg:justify-end">
-      <div
-        className="relative w-[260px] h-[260px] lg:w-[300px] lg:h-[300px] rounded-full bg-red flex items-center justify-center text-cream-light"
-        aria-hidden
-      >
-        <div className="absolute inset-2 rounded-full border border-cream-light/30 pointer-events-none" />
-        <div className="absolute inset-5 rounded-full border border-cream-light/15 pointer-events-none" />
-        <div className="text-center px-6">
-          <p className="text-[9px] tracking-[0.4em] mb-3 opacity-90 font-bold">
-            HUMANOID ROBOTICS
-          </p>
-          <div className="font-script text-3xl lg:text-[2.4rem] italic leading-[1.05]">
-            Advanced
-            <br />
-            Automatons
-          </div>
-          <p className="text-[8px] tracking-[0.32em] mt-3 opacity-90 font-bold">
-            CODIFYING THE
-            <br />
-            HUMAN CONDITION
-          </p>
-        </div>
+    <div className="flex justify-start lg:justify-start mt-2">
+      <div className="bg-ink text-cream-light px-5 py-2 border-2 border-cream-light shadow-[3px_3px_0_var(--color-ink)]">
+        <span className="font-script text-[18px] tracking-wide">
+          ★ The Marvel of the Modern Age ★
+        </span>
       </div>
     </div>
   );
 }
 
-function HeroStatsRow() {
+function HeroLeft() {
   return (
-    <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-2 max-w-3xl">
+    <div>
+      <HeroTitle />
+      <HeroBody />
+      <HeroStats />
+      <HeroCTAs />
+    </div>
+  );
+}
+
+function HeroTitle() {
+  return (
+    <h1 className="font-script text-red leading-[0.95] mt-4">
+      <span className="block text-[5.5rem] sm:text-[7rem] lg:text-[8rem]">
+        Advanced
+      </span>
+      <span className="block text-[5rem] sm:text-[6.5rem] lg:text-[7.5rem] pl-4 lg:pl-8 title-wavy">
+        Automatons
+      </span>
+    </h1>
+  );
+}
+
+function HeroBody() {
+  return (
+    <p className="mt-6 max-w-xl text-[18px] leading-[1.5] text-ink/85 font-body">
+      <span className="italic font-script text-[22px]">
+        &quot;Redefining the human condition for a better tomorrow.&quot;
+      </span>{" "}
+      Founded in 2025, Advanced Automatons is pioneering humanoid robotics —
+      engineering machines that think, move, and stand beside humanity.
+    </p>
+  );
+}
+
+function HeroStats() {
+  return (
+    <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl">
       {stats.map((s) => (
-        <StatCard key={s.label} value={s.value} label={s.label} variant="red" />
+        <HeroStatCard key={s.label} {...s} />
       ))}
+    </div>
+  );
+}
+
+function HeroStatCard({
+  value,
+  label,
+  variant,
+}: {
+  value: string;
+  label: string;
+  variant: "ink" | "red";
+}) {
+  const cardClass =
+    variant === "red"
+      ? "bg-red text-cream-light border-2 border-ink"
+      : "bg-ink text-cream-light border-2 border-ink";
+  return (
+    <div className={`${cardClass} px-4 py-3 text-center`}>
+      <div className="font-display text-[28px] leading-none">{value}</div>
+      <div className="font-script text-[14px] mt-1 opacity-95">{label}</div>
     </div>
   );
 }
 
 function HeroCTAs() {
   return (
-    <div className="mt-8 flex flex-wrap gap-3">
-      <Button href="#adam" variant="outline">
+    <div className="mt-7 flex flex-wrap gap-3">
+      <Button href="#adam" variant="red">
         View Android
       </Button>
-      <Button href="#invest" variant="red">
+      <Button href="#invest" variant="outline-red">
         Invest Now
       </Button>
+    </div>
+  );
+}
+
+function BrandBadge() {
+  return (
+    <div className="flex flex-col items-center lg:items-end gap-3">
+      <div className="relative w-[300px] h-[300px] lg:w-[340px] lg:h-[340px]">
+        {/* Outer black ring */}
+        <div className="absolute inset-0 rounded-full bg-ink" />
+        {/* Inner red circle */}
+        <div className="absolute inset-2 rounded-full bg-red flex flex-col items-center justify-center text-cream-light overflow-hidden">
+          {/* Top half: Advanced */}
+          <div className="flex-1 w-full flex items-end justify-center pb-2">
+            <span className="font-script text-cream-light text-[3rem] leading-none">
+              Advanced
+            </span>
+          </div>
+          {/* Middle white stripe */}
+          <div className="bg-cream-light text-red w-full py-2.5 text-center">
+            <span className="font-script text-[18px] tracking-[0.18em] uppercase font-bold">
+              Humanoid Robotics
+            </span>
+          </div>
+          {/* Bottom half: Automatons */}
+          <div className="flex-1 w-full flex items-start justify-center pt-2">
+            <span className="font-script text-cream-light text-[3rem] leading-none">
+              Automatons
+            </span>
+          </div>
+        </div>
+      </div>
+      <div className="bg-cream-light border-2 border-red px-4 py-1.5">
+        <span className="font-script text-red text-[18px]">
+          Redefining the Human Condition
+        </span>
+      </div>
     </div>
   );
 }

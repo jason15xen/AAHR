@@ -6,15 +6,18 @@ export default function CryptoCard({ option }: Props) {
   return (
     <button
       type="button"
-      className="text-left border border-cream-light/15 bg-black/40 p-4 hover:border-gold transition-colors w-full"
-      style={{ borderTopColor: option.color, borderTopWidth: 2 }}
+      className="text-left bg-ink p-4 hover:bg-ink-soft transition-colors w-full border-[3px]"
+      style={{ borderColor: option.color }}
     >
       <CryptoHeader option={option} />
-      <p className="text-[10px] text-cream-light/50 font-mono break-all leading-relaxed">
-        {option.address.slice(0, 26)}…
+      <p className="text-[12px] text-cream-light/60 font-mono break-all leading-snug mt-3 mb-2">
+        {option.address.slice(0, 36)}…
       </p>
-      <p className="text-[9px] text-cream-light/40 mt-2 tracking-[0.2em] uppercase font-bold">
-        Click to copy address
+      <p
+        className="text-[13px] font-script font-bold"
+        style={{ color: option.color }}
+      >
+        ✦ {option.tag}
       </p>
     </button>
   );
@@ -22,17 +25,21 @@ export default function CryptoCard({ option }: Props) {
 
 function CryptoHeader({ option }: Props) {
   return (
-    <div className="flex items-center gap-2 mb-2">
+    <div className="flex items-start gap-2.5">
       <span
-        className="w-7 h-7 rounded-full flex items-center justify-center text-[13px] font-bold text-white"
+        className="w-9 h-9 rounded-full flex items-center justify-center text-[15px] font-bold text-white shrink-0"
         style={{ backgroundColor: option.color }}
       >
         {option.glyph}
       </span>
-      <span className="font-bold text-sm text-cream-light">{option.name}</span>
-      <span className="text-[9px] text-cream-light/50 ml-auto tracking-[0.2em] uppercase font-bold">
-        {option.symbol}
-      </span>
+      <div className="flex flex-col leading-tight">
+        <span className="font-bold text-[15px] text-cream-light">
+          {option.name}
+        </span>
+        <span className="text-[11px] text-cream-light/55 tracking-[0.18em] uppercase font-bold">
+          {option.symbol}
+        </span>
+      </div>
     </div>
   );
 }

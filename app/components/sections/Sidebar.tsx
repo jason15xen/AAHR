@@ -8,28 +8,16 @@ const navItems: NavItem[] = [
   { label: "Invest Now", href: "#invest" },
 ];
 
-export default function Sidebar() {
-  const activeHref = "#home";
+const ACTIVE_HREF = "#home";
 
+export default function Sidebar() {
   return (
     <aside
-      className="hidden lg:flex flex-col bg-[var(--color-red)] text-cream-light w-[200px] py-8 sticky top-0 h-screen z-40"
+      className="hidden lg:flex flex-col bg-[var(--color-red)] text-cream-light w-[220px] py-6 sticky top-0 h-screen z-40 border-r-4 border-ink"
       aria-label="Primary navigation"
     >
       <BrandSeal />
-
-      <nav className="flex-1 px-7 mt-12">
-        <ul className="space-y-3.5">
-          {navItems.map((item) => (
-            <SidebarLink
-              key={item.href}
-              item={item}
-              active={item.href === activeHref}
-            />
-          ))}
-        </ul>
-      </nav>
-
+      <SidebarNav />
       <SidebarFooter />
     </aside>
   );
@@ -37,42 +25,60 @@ export default function Sidebar() {
 
 function BrandSeal() {
   return (
-    <div className="flex justify-center px-4">
-      <div className="w-20 h-20 rounded-full border-2 border-cream-light flex items-center justify-center bg-red-deeper/40 relative">
-        <div className="absolute inset-1 rounded-full border border-cream-light/40 pointer-events-none" />
-        <div className="text-center leading-none">
-          <div className="font-script italic text-3xl">A</div>
-          <div className="text-[7px] tracking-[0.3em] mt-1 opacity-90">AA</div>
-        </div>
+    <div className="flex justify-center px-4 mb-8">
+      <div className="w-[150px] h-[150px] rounded-full bg-cream-light border-[3px] border-ink flex flex-col items-center justify-center text-center px-3">
+        <span className="font-script text-red text-[26px] leading-[0.95]">
+          Advanced
+        </span>
+        <span className="font-script text-red text-[10px] tracking-[0.18em] uppercase font-bold mt-1">
+          Humanoid
+          <br />
+          Robotics
+        </span>
+        <span className="font-script text-red text-[26px] leading-[0.95] mt-1">
+          Automatons
+        </span>
       </div>
     </div>
   );
 }
 
+function SidebarNav() {
+  return (
+    <nav className="flex-1 px-5">
+      <ul className="space-y-2">
+        {navItems.map((item) => (
+          <SidebarLink
+            key={item.href}
+            item={item}
+            active={item.href === ACTIVE_HREF}
+          />
+        ))}
+      </ul>
+    </nav>
+  );
+}
+
 function SidebarLink({ item, active }: { item: NavItem; active: boolean }) {
+  if (active) {
+    return (
+      <li>
+        <a
+          href={item.href}
+          className="block bg-cream-light text-red border-2 border-ink px-3 py-2 font-script text-[20px]"
+        >
+          ★ {item.label}
+        </a>
+      </li>
+    );
+  }
   return (
     <li>
       <a
         href={item.href}
-        className={`group relative flex items-center gap-3 transition-colors ${
-          active ? "text-cream-light" : "text-cream-light/85 hover:text-gold"
-        }`}
+        className="block px-3 py-1.5 font-script text-[20px] text-cream-light hover:text-gold-light transition-colors"
       >
-        <span
-          className={`shrink-0 inline-block rounded-full transition-all ${
-            active
-              ? "w-2 h-2 bg-cream-light"
-              : "w-1.5 h-1.5 bg-cream-light/0 border border-cream-light/40 group-hover:bg-gold group-hover:border-gold"
-          }`}
-          aria-hidden
-        />
-        <span
-          className={`font-script text-[18px] leading-none ${
-            active ? "italic" : "italic"
-          }`}
-        >
-          {item.label}
-        </span>
+        {item.label}
       </a>
     </li>
   );
@@ -80,17 +86,15 @@ function SidebarLink({ item, active }: { item: NavItem; active: boolean }) {
 
 function SidebarFooter() {
   return (
-    <div className="px-5 mt-auto space-y-3">
-      <div className="text-center text-[8px] tracking-[0.32em] uppercase font-bold opacity-80 leading-relaxed">
-        <div>Est. 2025</div>
-        <div className="mt-1">Austin, TX</div>
+    <div className="px-5 mt-auto">
+      <div className="border-2 border-cream-light bg-gold/30 px-3 py-2 text-center font-script">
+        <div className="text-[14px] tracking-[0.2em] uppercase font-bold text-cream-light leading-tight">
+          Est. 2025
+        </div>
+        <div className="text-[14px] tracking-[0.2em] uppercase font-bold text-gold-light leading-tight mt-0.5">
+          Seed
+        </div>
       </div>
-      <a
-        href="#invest"
-        className="block text-center bg-red-deepest border border-cream-light/30 px-3 py-2.5 text-[9px] tracking-[0.22em] uppercase font-bold text-gold hover:bg-gold hover:text-ink hover:border-gold transition-colors"
-      >
-        Funding Round
-      </a>
     </div>
   );
 }

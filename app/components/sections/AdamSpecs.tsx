@@ -13,34 +13,21 @@ export default function AdamSpecs() {
   return (
     <section
       id="adam"
-      className="bg-cream-light py-20 lg:py-24 border-b border-line/60"
+      className="bg-cream py-16 lg:py-20 border-y-4 border-ink"
     >
-      <div className="px-6 md:px-12 lg:px-20">
+      <div className="px-6 md:px-12 lg:px-16">
         <SectionHeader preTitle="Introducing" title="ADAM" />
 
         <div className="grid grid-cols-1 lg:grid-cols-[340px_1fr] gap-10 items-start max-w-5xl mx-auto">
-          <AdamShowcase />
-          <AdamDetails unit={unit} onUnitChange={setUnit} />
+          <AdamShowcase unit={unit} onUnitChange={setUnit} />
+          <AdamDetails unit={unit} />
         </div>
       </div>
     </section>
   );
 }
 
-function AdamShowcase() {
-  return (
-    <div>
-      <div className="relative border border-line bg-cream">
-        <AdamFigure />
-        <div className="absolute bottom-3 left-3 right-3 bg-red text-cream-light text-[10px] tracking-[0.25em] uppercase font-bold py-2 px-3 text-center">
-          ADAM — AA-001 Alpha
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function AdamDetails({
+function AdamShowcase({
   unit,
   onUnitChange,
 }: {
@@ -49,18 +36,30 @@ function AdamDetails({
 }) {
   return (
     <div>
-      <p className="text-[14px] leading-relaxed text-ink/80 mb-6 max-w-2xl">
-        One android. Three distinct calibers. ADAM (Adaptive Dynamic Autonomous
-        Machine) is our regular humanoid platform — precision-engineered,
+      <div className="relative border-2 border-ink bg-cream-light shadow-[5px_5px_0_var(--color-ink)]">
+        <AdamFigure />
+        <div className="bg-red text-cream-light text-center py-2 px-3 border-t-2 border-ink">
+          <span className="font-script text-[20px]">ADAM — AA-001 alpha</span>
+        </div>
+      </div>
+      <div className="mt-3">
+        <UnitToggle value={unit} onChange={onUnitChange} />
+      </div>
+    </div>
+  );
+}
+
+function AdamDetails({ unit }: { unit: Unit }) {
+  return (
+    <div>
+      <p className="font-body text-[15px] leading-relaxed text-ink/85 mb-6 max-w-2xl italic">
+        One android. Three distinct callings. ADAM (Adaptive Dynamic Autonomous
+        Machine) is our singular humanoid platform — precision-engineered,
         adaptively programmed, and available in configurations tailored for
-        residential, commercial, and industrial deployments.
+        residential, commercial, and industrial deployment.
       </p>
 
       <SpecTable specs={specsData[unit]} />
-
-      <div className="mt-5 max-w-xs">
-        <UnitToggle value={unit} onChange={onUnitChange} />
-      </div>
     </div>
   );
 }
