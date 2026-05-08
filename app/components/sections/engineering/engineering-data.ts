@@ -4,31 +4,31 @@ export const techCards: TechCard[] = [
   {
     num: "01",
     title: "Neuromorphic Computing",
-    body: "Our COGNORTAY™ chip architecture mimics human neural networks. Built from scratch in Austin, this allows sub-millisecond inference, learning offloading rather than dependence on cloud, balancing for AI tasks like image recognition, motion control, and natural language. It is the brain of every ADAM android.",
+    body: "Our COGITRON™ chip architecture combines custom ASIC silicon with NVIDIA graphics cores to process sensation and decision simultaneously at up to 14 TFLOPS — enabling human-comparable reaction times in a package no larger than a human fist.",
   },
   {
     num: "02",
     title: "Biomechanical Locomotion",
-    body: "A motor-tendon-capture research scheme called BIOLOG. Each ADAM is built using elastic muscle activation and full-body skeletal scaling, while moving as a complement to the mechanical board of every ADAM and means all three skews bear deployment.",
+    body: "Extensive motion-capture research across 10,000+ hours has yielded fluid, stable bipedal movement adaptable to uneven terrain, stairs, and dynamic environments.",
   },
   {
     num: "03",
-    title: "Proprietary Technology",
-    body: "Every joint in ADAM uses our in-house TORQ™ servo system. Aviation-bristled motors with integrated torque sensing, ratio reduction, and AI-safe hooking. Industry-leading partnerships with TORQ™ and BUSTROBO begin to build us we are.",
+    title: "Custom Servo Engineering",
+    body: "Every joint in ADAM runs on our in-house TORQ™ servo system — precision brushless motors with integrated torque sensing, zero-backlash gearing, and fail-safe braking. Rated to 1,000,000+ cycles, our servos are the mechanical heart of every ADAM unit across all three skews.",
     highlight: true,
-    tags: ["TORQ™ Servo System", "Bare-Bones Hosting", "BIOLOG Mods"],
+    tags: ["TORQ™ Servo System", "Zero-Backlash Gearing", "Integrated Torque Sensing", "Fail-Safe Braking"],
   },
   {
     num: "04",
     title: "Adaptive Machine Learning",
-    body: "ADAM doesn't just execute commands — it learns from deployment. Lessons from one ADAM are uploaded to a learning lake, supporting all teams ahead with software updates so each ADAM grows.",
+    body: "ADAM doesn't just execute commands — it learns from deployment. Residential units achieve 94% task-adaptation within 48 hours. Industrial units self-optimise shift routines in real time.",
   },
 ];
 
 export const engineeringStats: EngineeringStat[] = [
-  { value: "100%", label: "In-House Engineering", variant: "gold" },
-  { value: "14 TFLOPS", label: "COGNORTAY™ Processing", variant: "cream" },
-  { value: "1M+", label: "LLM Parameters", variant: "cream" },
-  { value: "4 hrs", label: "Real-Time Per Task", variant: "cream" },
-  { value: "24 hrs", label: "Run Endurance Per Charge", variant: "gold" },
+  { value: "100%", label: "In-House Engineering", variant: "cream" },
+  { value: "14 TFLOPS", label: "COGITRON™ Processing", variant: "gold" },
+  { value: "1M+", label: "Servo Cycle Rating", variant: "cream" },
+  { value: "4 hrs", label: "Runtime Per Pack", variant: "gold" },
+  { value: "24 hrs", label: "Max Runtime w/ Swaps", variant: "cream" },
 ];

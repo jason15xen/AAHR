@@ -1,30 +1,28 @@
-import { BulbIcon, ChartIcon, ShieldIcon, CompassIcon } from "../../ui/Icons";
-
 export type DifferenceItem = {
   title: string;
   body: string;
-  icon: React.ReactNode;
+  emoji: string;
 };
 
 export const differenceItems: DifferenceItem[] = [
   {
     title: "Vertical Integration",
-    body: "By owning our entire technology stack, from chassis to cyborg, we eliminate third-party margins and capture more of the value chain end-to-end.",
-    icon: <BulbIcon />,
+    body: "By owning our entire technology stack — from TORQ™ servos to COGITRON™ chips — we eliminate third-party margins and capture 100% of manufacturing value. This translates to higher gross margins and faster scaling for investors.",
+    emoji: "💰",
   },
   {
     title: "Three Revenue Streams",
-    body: "ADAM's three distinct skews (Residential, Commercial, Industrial) create diversified revenue with growing margins from base to industrial. This translates to higher margins and broader market scale.",
-    icon: <ChartIcon />,
+    body: "ADAM's three distinct skews (Residential, Commercial, Industrial) create diversified revenue with pricing tiers from $15K to $750K+. Early investors benefit from multiple market entry points and reduced single-sector risk.",
+    emoji: "📈",
   },
   {
     title: "Proprietary IP Portfolio",
-    body: "Our two technologies — proprietary, with patents pending on TORQ™ and COGNORTAY™ — form the technical moat: barriers to entry with extra firepower against innovation, scaling, and potential by yields.",
-    icon: <ShieldIcon />,
+    body: "All core technologies are proprietary with patents actively being sought. Strategic partnerships with NVIDIA and QUALCOMM position AAHR at the forefront of silicon innovation, creating substantial barriers to entry.",
+    emoji: "🔬",
   },
   {
     title: "First-Mover Advantage",
-    body: "Established as the only US-side seed funding investment in 2025. AAA is positioned ahead of the humanoid robotics chase. Our projected market by 2027 represents unprecedented growth potential for early-stage investors.",
-    icon: <CompassIcon />,
+    body: "Established 2025 with seed funding secured, AAHR is positioned ahead of the humanoid robotics boom. Our $154B projected market by 2035 represents unprecedented growth potential for early-stage investors.",
+    emoji: "🌍",
   },
 ];

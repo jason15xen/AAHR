@@ -1,35 +1,32 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display, Cormorant_Garamond, Bebas_Neue } from "next/font/google";
+import { Caveat, Patrick_Hand, Oswald } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+// Casual handwritten — used for body, italics, and most UI text
+const caveat = Caveat({
+  variable: "--font-caveat",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-});
-
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-});
-
-const bebas = Bebas_Neue({
-  variable: "--font-bebas",
+// Upright handwritten — used for body text where Caveat is too cursive
+const patrickHand = Patrick_Hand({
+  variable: "--font-patrick",
   subsets: ["latin"],
   weight: ["400"],
+});
+
+// Bold condensed display caps — for big section titles
+const oswald = Oswald({
+  variable: "--font-oswald",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
   title: "Advanced Automatons — Humanoid Robotics",
   description:
-    "Codifying the human condition. ADAM is the world's first regular-issue humanoid platform — precision-engineered, adaptively programmed, and ready for residential, commercial, and industrial deployment.",
+    "Redefining the human condition for a better tomorrow. ADAM is the world's first regular-issue humanoid platform.",
 };
 
 export default function RootLayout({
@@ -40,9 +37,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${playfair.variable} ${cormorant.variable} ${bebas.variable} h-full antialiased`}
+      className={`${caveat.variable} ${patrickHand.variable} ${oswald.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-cream text-ink">{children}</body>
+      <body className="min-h-full flex flex-col bg-cream text-ink">
+        {children}
+      </body>
     </html>
   );
 }

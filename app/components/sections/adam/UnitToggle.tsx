@@ -7,7 +7,7 @@ type UnitToggleProps = {
 
 export default function UnitToggle({ value, onChange }: UnitToggleProps) {
   return (
-    <div className="flex border border-ink/80 text-[10px] font-bold uppercase tracking-[0.25em]">
+    <div className="flex border-2 border-ink">
       <ToggleButton active={value === "imperial"} onClick={() => onChange("imperial")}>
         Imperial
       </ToggleButton>
@@ -37,9 +37,9 @@ function ToggleButton({
     <button
       type="button"
       onClick={onClick}
-      className={`flex-1 py-2.5 transition-colors ${
-        active ? "bg-ink text-cream-light" : "bg-cream-light text-ink hover:bg-cream-dim"
-      } ${leftBorder ? "border-l border-ink/80" : ""}`}
+      className={`flex-1 py-3 font-display text-[14px] tracking-[0.25em] uppercase font-bold transition-colors ${
+        active ? "bg-red text-cream-light" : "bg-cream-light text-ink hover:bg-cream"
+      } ${leftBorder ? "border-l-2 border-ink" : ""}`}
     >
       {children}
     </button>

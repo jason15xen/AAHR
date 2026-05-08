@@ -6,7 +6,7 @@ type FieldProps = {
 export default function Field({ label, children }: FieldProps) {
   return (
     <label className="block">
-      <span className="block text-[10px] tracking-[0.28em] uppercase font-bold text-cream-light/70 mb-2">
+      <span className="block text-[12px] tracking-[0.28em] uppercase font-bold text-gold mb-2 font-display">
         {label}
       </span>
       {children}
@@ -15,6 +15,6 @@ export default function Field({ label, children }: FieldProps) {
 }
 
 const fieldClass =
-  "w-full bg-transparent border border-cream-light/20 px-3.5 py-3 text-sm text-cream-light placeholder:text-cream-light/35 focus:border-gold outline-none transition-colors";
+  "w-full bg-ink-soft border-2 border-gold/60 px-3.5 py-3 text-[15px] text-cream-light placeholder:text-cream-light/40 focus:border-gold outline-none transition-colors font-body";
 
 export { fieldClass };

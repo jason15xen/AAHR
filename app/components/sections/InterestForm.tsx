@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Button from "../ui/Button";
 import Field, { fieldClass } from "./form/Field";
 import SuccessMessage from "./form/SuccessMessage";
 
@@ -46,17 +45,17 @@ export default function InterestForm() {
   };
 
   return (
-    <section className="bg-ink text-cream-light pb-20 lg:pb-24">
-      <div className="px-6 md:px-12 lg:px-20">
-        <div className="text-center mb-10">
-          <p className="font-script italic text-2xl text-cream-light/70">
+    <section className="bg-ink text-cream-light pb-16 lg:pb-20">
+      <div className="px-6 md:px-12 lg:px-16">
+        <div className="text-center mb-8">
+          <p className="font-script text-[36px] text-gold leading-none">
             Express Your Interest
           </p>
         </div>
 
         <form
           onSubmit={handleSubmit}
-          className="max-w-3xl mx-auto bg-black/40 border border-cream-light/10 p-6 lg:p-10 space-y-5"
+          className="max-w-3xl mx-auto bg-ink border-4 border-gold p-6 lg:p-10 space-y-5"
         >
           {submitted ? (
             <SuccessMessage />
@@ -101,7 +100,7 @@ function NameAndEmail({
           required
           value={form.email}
           onChange={onChange}
-          placeholder="investor@institutional.com"
+          placeholder="jls@advancedautomatons.org"
           className={fieldClass}
         />
       </Field>
@@ -143,7 +142,7 @@ function MessageField({
         rows={4}
         value={value}
         onChange={onChange}
-        placeholder="Tell us about your investment focus..."
+        placeholder="Tell us about your investment goals..."
         className={`${fieldClass} resize-none`}
       />
     </Field>
@@ -153,12 +152,15 @@ function MessageField({
 function SubmitArea() {
   return (
     <>
-      <Button type="submit" variant="red" fullWidth className="!py-4 !text-[12px]">
+      <button
+        type="submit"
+        className="w-full py-4 bg-red text-cream-light border-4 border-gold font-script text-[24px] hover:bg-red-dark transition-colors"
+      >
         Submit My Interest
-      </Button>
-      <p className="text-[10px] text-cream-light/50 text-center leading-relaxed">
-        By submitting, you agree to receive investor communications from
-        Advanced Automatons. Your data is encrypted and never shared.
+      </button>
+      <p className="font-body italic text-[12px] text-cream-light/55 text-center leading-snug">
+        Not an offer to sell securities. All investments require accredited
+        investor verification. Advanced Automatons Inc. is a private company.
       </p>
     </>
   );

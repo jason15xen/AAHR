@@ -1,8 +1,3 @@
-import {
-  HomeIcon,
-  BriefcaseIcon,
-  FactoryIcon,
-} from "../../ui/Icons";
 import TierCard from "./TierCard";
 import type { Skew, SkewVariant } from "./types";
 
@@ -10,30 +5,33 @@ type SkewColumnProps = {
   skew: Skew;
 };
 
-const iconBySkew: Record<SkewVariant, React.ReactNode> = {
-  residential: <HomeIcon />,
-  commercial: <BriefcaseIcon />,
-  industrial: <FactoryIcon />,
-};
-
 export default function SkewColumn({ skew }: SkewColumnProps) {
-  const isIndustrial = skew.variant === "industrial";
-  const bodyBg = isIndustrial
-    ? "bg-ink text-cream-light border-ink"
-    : "bg-cream-light text-ink border-line";
+  const isCommercial = skew.variant === "commercial";
+  const headerClass = isCommercial
+    ? "bg-ink text-cream-light border-2 border-ink"
+    : "bg-red text-cream-light border-2 border-ink";
+  const bodyClass = "bg-cream-light text-ink border-x-2 border-b-2 border-ink";
 
   return (
     <div className="flex flex-col">
       <SkewHeader
         title={skew.title}
         description={skew.description}
-        icon={iconBySkew[skew.variant]}
+        className={headerClass}
       />
-
-      <div className={`flex flex-col gap-4 p-5 flex-1 border ${bodyBg}`}>
-        {skew.tiers.map((tier) => (
-          <TierCard key={tier.name} tier={tier} dark={isIndustrial} />
-        ))}
+      <div className={`p-5 flex-1 ${bodyClass}`}>
+        <p className="font-body text-[14px] italic leading-snug text-ink/75 mb-5">
+          {skew.longDescription}
+        </p>
+        <div className="flex flex-col gap-5">
+          {skew.tiers.map((tier) => (
+            <TierCard
+              key={tier.name}
+              tier={tier}
+              variant={skew.variant}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -42,17 +40,16 @@ export default function SkewColumn({ skew }: SkewColumnProps) {
 function SkewHeader({
   title,
   description,
-  icon,
+  className,
 }: {
   title: string;
   description: string;
-  icon: React.ReactNode;
+  className: string;
 }) {
   return (
-    <div className="bg-red text-cream-light px-6 py-7 text-center">
-      <div className="flex justify-center mb-2 opacity-90">{icon}</div>
-      <h3 className="font-script italic text-3xl">{title}</h3>
-      <p className="text-[10px] tracking-[0.25em] uppercase mt-2 opacity-80 font-bold">
+    <div className={`px-6 py-7 text-center ${className}`}>
+      <h3 className="font-script text-[44px] leading-none">{title}</h3>
+      <p className="font-body text-[14px] mt-2 italic opacity-90">
         {description}
       </p>
     </div>

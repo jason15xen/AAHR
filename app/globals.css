@@ -1,20 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  --color-cream: #f3e9d2;
-  --color-cream-light: #faf2dc;
-  --color-cream-dim: #e8dcc0;
-  --color-red: #c8102e;
-  --color-red-dark: #9b0c23;
-  --color-red-deeper: #6e0817;
-  --color-red-deepest: #3d040d;
-  --color-black: #0a0a0a;
-  --color-ink: #161616;
-  --color-ink-soft: #2a2a2a;
-  --color-gold: #e8b820;
-  --color-gold-light: #f4d56a;
-  --color-muted: #6b6b6b;
-  --color-line: #cbbf9f;
+  /* Cream — warm honey paper, more golden than before */
+  --color-cream: #f5e9c9;
+  --color-cream-light: #faf1d4;
+  --color-cream-dim: #e6d5a3;
+  /* Red — vivid crimson, brighter than before */
+  --color-red: #dc2626;
+  --color-red-dark: #b91c1c;
+  --color-red-deeper: #991b1b;
+  --color-red-deepest: #7f1d1d;
+  /* Ink — near-pure black, deeper than before */
+  --color-black: #000000;
+  --color-ink: #0a0a0a;
+  --color-ink-soft: #1a1a1a;
+  /* Gold — brighter yellow-gold */
+  --color-gold: #f4c430;
+  --color-gold-light: #fcd96b;
+  --color-gold-dark: #c89a17;
+  /* Borders */
+  --color-line: #c4b585;
+  --color-line-strong: #a89870;
 }
 
 @theme inline {
@@ -29,17 +35,24 @@
   --color-ink-soft: var(--color-ink-soft);
   --color-gold: var(--color-gold);
   --color-gold-light: var(--color-gold-light);
-  --color-muted: var(--color-muted);
+  --color-gold-dark: var(--color-gold-dark);
   --color-line: var(--color-line);
-  --font-sans: var(--font-inter);
-  --font-serif: var(--font-playfair);
-  --font-script: var(--font-cormorant);
-  --font-display: var(--font-bebas);
+  --color-line-strong: var(--color-line-strong);
+  --font-sans: var(--font-patrick);
+  --font-script: var(--font-caveat);
+  --font-display: var(--font-oswald);
 }
 
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+input,
+select,
+textarea,
+button {
+  border-radius: 0;
 }
 
 html,
@@ -49,46 +62,66 @@ body {
 }
 
 body {
-  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
-  font-feature-settings: "ss01", "ss02";
+  font-family: var(--font-patrick), "Comic Sans MS", cursive;
+  font-size: 16px;
 }
 
+/* Casual script — Caveat */
 .font-script {
-  font-family: var(--font-cormorant), Georgia, serif;
-  font-style: italic;
-  font-weight: 500;
+  font-family: var(--font-caveat), "Comic Sans MS", cursive;
+  font-weight: 700;
+  letter-spacing: 0;
 }
 
+/* Bold display caps — Oswald */
 .font-display {
-  font-family: var(--font-bebas), Impact, sans-serif;
-  letter-spacing: 0.04em;
-  font-weight: 400;
+  font-family: var(--font-oswald), Impact, sans-serif;
+  letter-spacing: 0.02em;
+  font-weight: 700;
 }
 
-.font-serif {
-  font-family: var(--font-playfair), Georgia, serif;
+/* Casual sans body — Patrick Hand */
+.font-body {
+  font-family: var(--font-patrick), "Comic Sans MS", cursive;
 }
 
-.divider-flourish {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
+/* Star + text eyebrow with stars */
+.eyebrow-stars::before {
+  content: "★ ";
+}
+.eyebrow-stars::after {
+  content: " ★";
 }
 
-.divider-flourish::before,
-.divider-flourish::after {
+/* Wavy red underline used under hero title */
+.title-wavy::after {
   content: "";
-  width: 36px;
-  height: 1px;
-  background: currentColor;
-  opacity: 0.5;
+  display: block;
+  width: 280px;
+  height: 14px;
+  margin-top: 8px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 280 14' preserveAspectRatio='none'><path d='M0,7 Q35,0 70,7 T140,7 T210,7 T280,7' fill='none' stroke='%23dc2626' stroke-width='2.5' stroke-linecap='round'/></svg>");
+  background-repeat: no-repeat;
 }
 
-/* Diagonal line pattern used on Adam figure backgrounds */
-.bg-grid-blue {
-  background-color: #2c4d92;
-  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.18) 25%, transparent 25%),
-    linear-gradient(-45deg, rgba(255, 255, 255, 0.18) 25%, transparent 25%);
-  background-size: 6px 6px;
+/* Wavy divider used under section headers */
+.divider-wave {
+  display: block;
+  width: 200px;
+  height: 12px;
+  margin: 0 auto;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'><path d='M0,6 Q25,0 50,6 T100,6 T150,6 T200,6' fill='none' stroke='%23dc2626' stroke-width='2' stroke-linecap='round'/></svg>");
+  background-repeat: no-repeat;
+}
+
+/* Notebook paper horizontal lines for hero background */
+.bg-notebook {
+  background-color: var(--color-cream);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 36px,
+    rgba(220, 38, 38, 0.1) 36px,
+    rgba(220, 38, 38, 0.1) 37px
+  );
 }

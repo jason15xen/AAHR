@@ -14,4 +14,5 @@ export type CryptoOption = {
   color: string;
   glyph: string;
   address: string;
+  tag: string;
 };

@@ -1,60 +1,86 @@
-import Badge from "../../ui/Badge";
-import Button from "../../ui/Button";
-import type { Tier } from "./types";
+import type { Tier, SkewVariant } from "./types";
 
 type TierCardProps = {
   tier: Tier;
-  dark?: boolean;
+  variant: SkewVariant;
 };
 
-export default function TierCard({ tier, dark = false }: TierCardProps) {
+export default function TierCard({ tier, variant }: TierCardProps) {
+  const isIndustrial = variant === "industrial";
+
   return (
-    <div
-      className={`relative p-5 ${
-        dark
-          ? "bg-ink-soft border border-cream-light/10"
-          : "bg-cream border border-line"
+    <article
+      className={`p-4 ${
+        isIndustrial
+          ? "bg-ink text-cream-light border-2 border-red"
+          : "bg-cream-light text-ink border-2 border-ink"
       }`}
     >
-      {tier.badge && (
-        <div className="absolute top-3 right-3">
-          <Badge variant="gold">{tier.badge}</Badge>
-        </div>
-      )}
-
-      <TierHeader name={tier.name} price={tier.price} dark={dark} />
-      <TierFeatures features={tier.features} dark={dark} />
-      <TierCta dark={dark} />
-    </div>
+      <TierHeader
+        name={tier.name}
+        price={tier.price}
+        badge={tier.badge}
+        dark={isIndustrial}
+      />
+      <TierFeatures features={tier.features} dark={isIndustrial} />
+      <TierCta dark={isIndustrial} />
+    </article>
   );
 }
 
 function TierHeader({
   name,
   price,
+  badge,
   dark,
 }: {
   name: string;
   price: string;
+  badge?: string;
   dark: boolean;
 }) {
+  const priceColor = dark ? "text-gold" : "text-red";
+  const titleColor = dark ? "text-cream-light" : "text-ink";
   return (
-    <div className="mb-3">
-      <p
-        className={`text-[10px] tracking-[0.22em] uppercase font-bold ${
-          dark ? "text-cream-light/60" : "text-ink/60"
-        }`}
-      >
-        {name}
-      </p>
-      <p
-        className={`font-display text-3xl mt-1 ${
-          dark ? "text-gold" : "text-red"
-        }`}
-      >
-        {price}
-      </p>
+    <div className="mb-3 flex items-start justify-between gap-2">
+      <div>
+        <p className={`font-script text-[22px] leading-none ${titleColor}`}>
+          {name}
+        </p>
+        <p className={`font-display text-[28px] mt-1 leading-none ${priceColor}`}>
+          {price}
+        </p>
+      </div>
+      {badge && <TierBadge label={badge} dark={dark} />}
     </div>
+  );
+}
+
+function TierBadge({ label, dark }: { label: string; dark: boolean }) {
+  const isPopular = label.toLowerCase() === "popular";
+  if (dark) {
+    // Industrial badges
+    return (
+      <span
+        className={`text-[10px] tracking-[0.2em] uppercase font-bold px-2.5 py-1 font-display whitespace-nowrap border-2 ${
+          isPopular
+            ? "bg-red text-cream-light border-red"
+            : "bg-cream-light text-ink border-cream-light"
+        }`}
+      >
+        {label}
+      </span>
+    );
+  }
+  // Residential / Commercial badges
+  return (
+    <span
+      className={`text-[10px] tracking-[0.2em] uppercase font-bold px-2.5 py-1 font-display whitespace-nowrap border-2 border-ink ${
+        isPopular ? "bg-gold text-ink" : "bg-cream text-ink"
+      }`}
+    >
+      {label}
+    </span>
   );
 }
 
@@ -67,16 +93,16 @@ function TierFeatures({
 }) {
   return (
     <ul
-      className={`space-y-1.5 text-[12px] mb-5 ${
-        dark ? "text-cream-light/85" : "text-ink/80"
+      className={`space-y-1 mb-4 font-body text-[15px] ${
+        dark ? "text-cream-light/85" : "text-ink/85"
       }`}
     >
       {features.map((f, i) => (
         <li key={i} className="flex gap-2">
           <span className={`shrink-0 ${dark ? "text-gold" : "text-red"}`}>
-            •
+            ✦
           </span>
-          <span>{f}</span>
+          <span className="leading-snug">{f}</span>
         </li>
       ))}
     </ul>
@@ -85,13 +111,15 @@ function TierFeatures({
 
 function TierCta({ dark }: { dark: boolean }) {
   return (
-    <Button
+    <button
       type="button"
-      variant={dark ? "gold" : "red"}
-      fullWidth
-      className="!py-2.5 !text-[10px]"
+      className={`w-full py-2.5 font-script text-[18px] border-2 transition-colors ${
+        dark
+          ? "bg-red text-cream-light border-red hover:bg-red-dark"
+          : "bg-red text-cream-light border-red hover:bg-red-dark"
+      }`}
     >
       Request a Quote
-    </Button>
+    </button>
   );
 }

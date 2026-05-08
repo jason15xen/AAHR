@@ -1,21 +1,32 @@
 export default function AdamFigure() {
   return (
-    <div className="relative aspect-[3/4] flex items-center justify-center overflow-hidden bg-grid-blue">
+    <div className="relative aspect-[3/4] flex items-end justify-center overflow-hidden bg-cream-light">
+      {/* Subtle blueprint grid background */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(196,26,44,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(196,26,44,0.08) 1px, transparent 1px)",
+          backgroundSize: "20px 20px",
+        }}
+      />
       <svg
         viewBox="0 0 200 290"
-        className="w-[58%] h-[88%] text-cream-light/95 drop-shadow-md"
-        fill="currentColor"
+        className="relative w-[78%] h-[92%]"
         aria-hidden
       >
-        <defs>
-          <pattern id="adam-pat" patternUnits="userSpaceOnUse" width="5" height="5">
-            <path d="M0 2.5 L5 2.5" stroke="#2c4d92" strokeWidth="0.6" />
-            <path d="M2.5 0 L2.5 5" stroke="#2c4d92" strokeWidth="0.6" />
-          </pattern>
-        </defs>
-        <g fill="url(#adam-pat)" stroke="#1d3a73" strokeWidth="1">
+        <g
+          fill="#5a82c8"
+          fillOpacity="0.45"
+          stroke="#1d3a73"
+          strokeWidth="1.6"
+          strokeLinejoin="round"
+          strokeLinecap="round"
+        >
           {/* Head */}
           <path d="M82 12 Q82 4 100 4 Q118 4 118 12 L118 36 Q118 56 100 58 Q82 56 82 36 Z" />
+          {/* Visor */}
+          <rect x="86" y="20" width="28" height="14" fill="#1d3a73" fillOpacity="0.6" />
           {/* Neck */}
           <rect x="94" y="56" width="12" height="10" />
           {/* Torso */}
@@ -38,8 +49,8 @@ export default function AdamFigure() {
           <path d="M106 152 L126 152 L124 214 L106 210 Z" />
           <path d="M106 210 L124 214 L122 272 L106 268 Z" />
           {/* Feet */}
-          <rect x="68" y="270" width="32" height="10" rx="2" />
-          <rect x="100" y="270" width="32" height="10" rx="2" />
+          <rect x="68" y="270" width="32" height="10" />
+          <rect x="100" y="270" width="32" height="10" />
         </g>
       </svg>
     </div>
